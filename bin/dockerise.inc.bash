@@ -27,17 +27,21 @@ if ! ${isInDocker}; then
         interactiveParameter=
     fi
 
+    readonly coreContractPath=$(realpath "${ROOT_DIR}"/../core-contract)
+
     docker \
         run \
             --rm \
             --tty \
             ${interactiveParameter} \
             --volume "${ROOT_DIR}":/app \
+            --volume ${coreContractPath}:${coreContractPath} \
             --user "$(id -u)":"$(id -g)" \
             --entrypoint "${BIN_DIR}"/"$(basename "${0}")" \
             --workdir /app \
             --env HOST_ROOT_DIR="${ROOT_DIR}" \
             "${DOCKER_IMAGE_NAME}" \
             "${@}"
+
     exit 0
 fi

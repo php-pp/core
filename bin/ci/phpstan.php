@@ -7,7 +7,7 @@ use Steevanb\ParallelProcess\{
     Process\Process,
     Process\ProcessArray
 };
-use PhpPp\Collection\Component\Collection\StringCollection;
+use PhpPp\Core\Component\Collection\StringCollection;
 use Symfony\Component\Console\Input\ArgvInput;
 
 require $_SERVER['COMPOSER_HOME'] . '/vendor/autoload.php';
